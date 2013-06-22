@@ -161,6 +161,17 @@ static int find_window(HWND syswin)
 	return -1;
 }
 
+static int count_windows()
+{
+	int count = 0;
+	for(size_t i=0; i<windows.size(); i++) {
+		if(windows[i]) {
+			count++;
+		}
+	}
+	return count;
+}
+
 static void mouse_handler(Window *win, int bn, bool pressed);
 
 long CALLBACK win_handle_event(HWND syswin, unsigned int msg, unsigned int wparam, long lparam)
@@ -180,6 +191,9 @@ long CALLBACK win_handle_event(HWND syswin, unsigned int msg, unsigned int wpara
 
 	case WM_CLOSE:
 		destroy_window(winid);
+		if(count_windows() == 0) {
+			PostQuitMessage(0);
+		}
 		break;
 
 	case WM_SIZE:
