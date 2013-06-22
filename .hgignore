@@ -1,0 +1,10 @@
+\.o$
+\.swp$
+\.exe$
+\.lib$
+\.dll$
+Debug$
+Release$
+\.user$
+\.sdf$
+\.suo$
