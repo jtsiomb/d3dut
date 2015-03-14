@@ -1,0 +1,51 @@
+D3DUT - Direct3D Utility Toolkit
+--------------------------------
+
+
+1. Overview
+
+D3DUT is for Direct3D 11, what GLUT is for OpenGL.
+
+In a nutshell, d3dut handles window creation, Direct3D setup, and event handling,
+in an easy and intuitive way. The API is essentially identical to the GLUT API,
+allowing you to create multiple D3D windows, and to set up per-window callback
+functions for event delivery.
+
+Here is a short snippet that shows how to create a Direct3D 11 window and set up
+event handlers with d3dut (a full example program is included under the example
+subdirectory):
+
+	d3dut_init(&argc, argv);
+	d3dut_init_window_size(800, 600);
+	d3dut_init_display_mode(D3DUT_RGB | D3DUT_DEPTH | D3DUT_DOUBLE);
+	d3dut_create_window("window title");
+
+	d3dut_display_func(display);
+
+	d3dut_main_loop();
+
+It's that simple, exactly like in GLUT: d3dut_main_loop handles all the event
+processing, and calls your registered callbacks. After d3dut_create_window the
+Direct3D device, context and swap chain are completely created and initialized
+and you may start loading textures, creating vertex buffers, etc.
+
+
+2. License
+
+Copyright (C) 2013 John Tsiombikas <nuclear@member.fsf.org>
+D3DUT is free software. Feel free to use it, modify it, and redistribute it
+under the terms of the GNU Lesser General Public License (LGPL) version 3, or
+at your option any later version published by the Free Software Foundation.
+
+In simple words, this means that you can link with this library to use it
+without any restrictions, for either free or proprietary programs, but if you
+make any modifications and use them in any released program or derivative
+library, you must release them under these exact same terms.
+
+See COPYING and COPYING.LESSER for the full license text.
+
+
+3. Contact
+
+Feel free to contact me for any comments or suggestions, bug reports or patches,
+through email at: nuclear@member.fsf.org.
